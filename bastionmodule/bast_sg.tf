@@ -32,14 +32,15 @@ locals {
     ["inbound", entry, "tcp", 22, 22]
   ]
 
-  sg_destrules = [
-    for entry in var.destination_sgs :
-    ["outbound", entry, "tcp", 22, 22]
-  ]
+  # sg_destrules = [
+  #   for entry in var.destination_sgs :
+  #   ["outbound", entry, "tcp", 22, 22]
+  # ]
 
 
   #concatinate all sources of rules
-  sg_rules = concat(local.sg_sourcerules, local.sg_destrules, local.sg_baserules)
+  # sg_rules = concat(local.sg_sourcerules, local.sg_destrules, local.sg_baserules)
+  sg_rules = concat(local.sg_sourcerules, local.sg_baserules)
   sg_mappedrules = [
     for entry in local.sg_rules :
     merge(zipmap(local.sg_keys, entry))
