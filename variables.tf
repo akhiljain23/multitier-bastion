@@ -102,3 +102,6 @@ variable "ssh_key_name" {
   description = "Name giving to public SSH key uploaded to IBM Cloud for VSI access"
 }
 
+variable "frontend_security_group_id" {
+  description = "SecurityGroupID of frontend server"
+}
